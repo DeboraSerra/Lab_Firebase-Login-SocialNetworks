@@ -14,6 +14,17 @@ Write a function to check if a user is logged
 window.addEventListener("load", function () {
   //Listen for auth state changes
 
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    "sign-in-phone",
+    {
+      size: "invisible",
+      callback: (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        onSignInSubmit();
+      },
+    }
+  );
+
   document
     .getElementById("sign-in-button")
     .addEventListener("click", function () {
@@ -68,6 +79,29 @@ window.addEventListener("load", function () {
         console.log("Account created");
         alert("Account created");
         location.href = "home.html";
+      })
+      .catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        console.log("Logging fail", errorMessage);
+      });
+  });
+
+  document.getElementById("sign-in-phone").addEventListener("click", () => {
+    const phoneNumber = this.document.getElementById("phone").value;
+    const appVerifier = window.recaptchaVerifier;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((confirmationResult) => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
+        console.log({ confirmationResult });
+        console.log("Logging sucessfully");
+        alert("Logging sucessfully");
+        // location.href = "home.html";
+        // ...
       })
       .catch((error) => {
         let errorCode = error.code;
