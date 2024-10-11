@@ -7,16 +7,40 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Firebase App with Authentication with Social Networks">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Firebase App with Authentication with Social Networks"
+    />
     <title>Home - Social Networks</title>
     <link rel="stylesheet" href="css/core.min.css" />
     <link rel="stylesheet" href="css/vendor_bundle.min.css" />
 
-    <link rel="shortcut icon" type="image/x-icon"
-        href="https://canvascctb.s3.ca-central-1.amazonaws.com/account_1/attachments/95/CCTB_favicon.ico" />
-
-</head>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://canvascctb.s3.ca-central-1.amazonaws.com/account_1/attachments/95/CCTB_favicon.ico"
+    />
+    <script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="https://matriz-teletrabajo-utc.web.app/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/home.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-5 fw-bold text-center mt-6">Home</h1>
+      <div class="row">
+        <div class="col-md-9 col-lg-6 m-auto">
+          <a
+            id="sign-out-button"
+            class="btn bg-googleplay mt-4 text-white w-100"
+            href="#"
+            >Sign out</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
